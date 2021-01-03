@@ -42,16 +42,21 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to register.</h4>
+            <h4>A warning about email functionality.</h4>
             <hr />
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
+                        <p>This app sends you confirmation emails for some actions.</p>
+                        <p>Please use a <b>@@mailinator.com</b> email.</p>
+                        <p>This app uses SendGrid service to send emails and my tests showed mailinator to be the most reliable email service to receive emails from this app.</p>
+                        <br /><br />
+                        <p><b>How to use mailinator:</b></p>
+                        <p>Enter a random email address that ends with <b>@@mailinator.com</b>. For example: goodapples@mailinator.com</p>
+                        <p>Go to <a href="https://www.mailinator.com" target="_blank">mailinator.com</a></p>
+                        <p>Enter "goodapples" to the textbox at the top of the page</p>
+                        <p>Click "GO", and you will reach a mailbox that displays all emails that was sent to goodapples@mailinator.com recently.</p>
                     </div>
                 }
                 else
