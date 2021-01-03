@@ -57,8 +57,7 @@ namespace ChatApp.Presentation
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseDeveloperExceptionPage();                
             }
             else
             {
