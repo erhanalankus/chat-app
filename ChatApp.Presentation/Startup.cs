@@ -1,5 +1,5 @@
+using ChatApp.Data.Models;
 using ChatApp.Presentation.Data;
-using ChatApp.Presentation.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

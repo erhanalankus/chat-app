@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatApp.Presentation.Models
+namespace ChatApp.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {
