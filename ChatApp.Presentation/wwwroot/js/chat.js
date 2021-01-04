@@ -188,23 +188,6 @@
             });
             self.chatUsers.remove(temp);
         }
-
-        self.uploadFiles = function () {
-            var form = document.getElementById("uploadForm");
-            $.ajax({
-                type: "POST",
-                url: '/api/Upload',
-                data: new FormData(form),
-                contentType: false,
-                processData: false,
-                success: function () {
-                    $("#UploadedFile").val("");
-                },
-                error: function (error) {
-                    alert('Error: ' + error.responseText);
-                }
-            });
-        }
     }
 
     // Represent server data
