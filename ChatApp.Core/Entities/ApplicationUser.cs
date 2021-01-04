@@ -19,7 +19,7 @@ namespace ChatApp.Core.Entities
         public string FullName => FirstName + " " + LastName;
 
         [NotMapped]
-        public string Avatar => "images/icons/avatar1.png";
+        public string Avatar => "avatar1.png";
 
         public ICollection<Room> Rooms { get; set; }
         public ICollection<Message> Messages { get; set; }
