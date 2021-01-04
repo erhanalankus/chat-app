@@ -13,5 +13,8 @@ namespace ChatApp.Core.Entities
         public string FirstName { get; set; }
         [PersonalData]
         public string LastName { get; set; }
+
+        public ICollection<Room> Rooms { get; set; }
+        public ICollection<Message> Messages { get; set; }
     }
 }
