@@ -408,7 +408,7 @@ body {
 
 .app {
     display: flex;
-    height: 100vh;
+    height: 85vh;
     justify-content: space-between;
     background: white;
     border: 1px solid #ccc;
