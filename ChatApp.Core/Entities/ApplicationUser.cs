@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace ChatApp.Core.Entities
         public string FirstName { get; set; }
         [PersonalData]
         public string LastName { get; set; }
+
+        [NotMapped]
+        public string FullName => FirstName + " " + LastName;
 
         public ICollection<Room> Rooms { get; set; }
         public ICollection<Message> Messages { get; set; }
