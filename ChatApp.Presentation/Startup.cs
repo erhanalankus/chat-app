@@ -1,3 +1,4 @@
+using AutoMapper;
 using ChatApp.Communication;
 using ChatApp.Core.Entities;
 using ChatApp.Presentation.Data;
@@ -36,7 +37,9 @@ namespace ChatApp.Presentation
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAutoMapper(typeof(ChatHub));
             services.AddRazorPages();
+            services.AddSignalR();
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
