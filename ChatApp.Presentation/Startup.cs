@@ -1,4 +1,4 @@
-using ChatApp.Data.Models;
+using ChatApp.Core.Entities;
 using ChatApp.Presentation.Data;
 using ChatApp.Service;
 using Microsoft.AspNetCore.Builder;
