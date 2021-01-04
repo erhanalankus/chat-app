@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChatApp.Communication\ChatApp.Communication.csproj" />
     <ProjectReference Include="..\ChatApp.Core\ChatApp.Core.csproj" />
     <ProjectReference Include="..\ChatApp.Data\ChatApp.Data.csproj" />
     <ProjectReference Include="..\ChatApp.Service\ChatApp.Service.csproj" />

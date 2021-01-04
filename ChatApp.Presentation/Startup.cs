@@ -1,3 +1,4 @@
+using ChatApp.Communication;
 using ChatApp.Core.Entities;
 using ChatApp.Presentation.Data;
 using ChatApp.Service;
@@ -77,6 +78,7 @@ namespace ChatApp.Presentation
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }
