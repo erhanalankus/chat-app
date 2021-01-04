@@ -16,8 +16,8 @@ namespace ChatApp.Communication
     [Authorize]
     public class ChatHub : Hub
     {
-        public readonly static List<UserViewModel> _Connections = new List<UserViewModel>();
-        public readonly static List<RoomViewModel> _Rooms = new List<RoomViewModel>();
+        private readonly static List<UserViewModel> _Connections = new List<UserViewModel>();
+        private readonly static List<RoomViewModel> _Rooms = new List<RoomViewModel>();
         private readonly static Dictionary<string, string> _ConnectionsMap = new Dictionary<string, string>();
 
         private readonly ApplicationDbContext _context;
@@ -64,7 +64,7 @@ namespace ChatApp.Communication
         {
             try
             {
-                var user = _Connections.Where(u => u.Username == IdentityName).FirstOrDefault();
+                var user = _Connections.FirstOrDefault(u => u.Username == IdentityName);
                 if (user != null && user.CurrentRoom != roomName)
                 {
                     // Remove user from others list
@@ -122,13 +122,10 @@ namespace ChatApp.Communication
                     _context.Rooms.Add(room);
                     _context.SaveChanges();
 
-                    if (room != null)
-                    {
-                        // Update room list
-                        var roomViewModel = _mapper.Map<Room, RoomViewModel>(room);
-                        _Rooms.Add(roomViewModel);
-                        await Clients.All.SendAsync("addChatRoom", roomViewModel);
-                    }
+                    // Update room list
+                    var roomViewModel = _mapper.Map<Room, RoomViewModel>(room);
+                    _Rooms.Add(roomViewModel);
+                    await Clients.All.SendAsync("addChatRoom", roomViewModel);
                 }
             }
             catch (Exception ex)
@@ -203,7 +200,7 @@ namespace ChatApp.Communication
             {
                 var user = _context.Users.Where(u => u.UserName == IdentityName).FirstOrDefault();
                 var userViewModel = _mapper.Map<ApplicationUser, UserViewModel>(user);
-                userViewModel.Device = GetDevice();
+                userViewModel.Device = "Web";
                 userViewModel.CurrentRoom = "";
 
                 if (!_Connections.Any(u => u.Username == IdentityName))
@@ -225,7 +222,7 @@ namespace ChatApp.Communication
         {
             try
             {
-                var user = _Connections.Where(u => u.Username == IdentityName).First();
+                var user = _Connections.First(u => u.Username == IdentityName);
                 _Connections.Remove(user);
 
                 // Tell other users to remove you from their list
@@ -245,11 +242,6 @@ namespace ChatApp.Communication
         private string IdentityName
         {
             get { return Context.User.Identity.Name; }
-        }
-
-        private string GetDevice()
-        {
-            return "Web";
         }
     }
 }
