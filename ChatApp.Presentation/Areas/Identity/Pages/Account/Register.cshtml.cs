@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using ChatApp.Data.Models;
+using ChatApp.Core.Entities;
 
 namespace ChatApp.Presentation.Areas.Identity.Pages.Account
 {
