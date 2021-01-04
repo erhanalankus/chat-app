@@ -29,32 +29,6 @@ namespace ChatApp.Communication
             _mapper = mapper;
         }
 
-        public async Task SendPrivate(string receiverName, string message)
-        {
-            if (_ConnectionsMap.TryGetValue(receiverName, out string userId))
-            {
-                // Who is the sender;
-                var sender = _Connections.Where(u => u.Username == IdentityName).First();
-
-                if (!string.IsNullOrEmpty(message.Trim()))
-                {
-                    // Build the message
-                    var messageViewModel = new MessageViewModel()
-                    {
-                        Content = Regex.Replace(message, @"(?i)<(?!img|a|/a|/img).*?>", string.Empty),
-                        From = sender.FullName,
-                        Avatar = sender.Avatar,
-                        To = "",
-                        Timestamp = DateTime.Now.ToLongTimeString()
-                    };
-
-                    // Send the message
-                    await Clients.Client(userId).SendAsync("newMessage", messageViewModel);
-                    await Clients.Caller.SendAsync("newMessage", messageViewModel);
-                }
-            }
-        }
-
         public async Task SendToRoom(string roomName, string message)
         {
             try
