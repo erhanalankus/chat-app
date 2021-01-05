@@ -1,4 +1,4 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+﻿#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
@@ -19,4 +19,6 @@ RUN dotnet publish "ChatApp.Presentation.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV SendGridUser={REDACTED-USERNAME}
+ENV SendGridKey={REDACTED-APIKEY}
 ENTRYPOINT ["dotnet", "ChatApp.Presentation.dll"]
