@@ -17,8 +17,4 @@
     <ProjectReference Include="..\ChatApp.Core\ChatApp.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database\" />
-  </ItemGroup>
-
 </Project>
