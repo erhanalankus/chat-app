@@ -22,23 +22,28 @@ namespace ChatApp.Presentation.Pages
             _logger = logger;
         }
 
-        private void AddExceptionMessageToModel()
+        private void AddInvalidSendgridCredentialsExceptionMessageToModel()
         {
             var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            ExceptionMessage = exceptionHandlerPathFeature.Error.Message;
-            _logger.LogError(ExceptionMessage);
+
+            if (exceptionHandlerPathFeature?.Error is InvalidSendgridCredentialsException)
+            {
+                ExceptionMessage = exceptionHandlerPathFeature.Error.Message;
+            }
         }
 
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-            AddExceptionMessageToModel();
+            AddInvalidSendgridCredentialsExceptionMessageToModel();
+            _logger.LogError(ExceptionMessage);
         }
 
         public void OnPost()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-            AddExceptionMessageToModel();
+            AddInvalidSendgridCredentialsExceptionMessageToModel();
+            _logger.LogError(ExceptionMessage);
         }
     }
 }
