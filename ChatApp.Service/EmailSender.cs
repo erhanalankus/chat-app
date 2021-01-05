@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using ChatApp.Core.CustomExceptions;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -22,6 +23,11 @@ namespace ChatApp.Service
 
         public Task Execute(string apiKey, string subject, string message, string email)
         {
+            if (apiKey.Length < 25)
+            {
+                throw new InvalidSendgridCredentialsException(Options.SendGridUser);
+            }
+
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {

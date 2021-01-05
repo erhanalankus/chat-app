@@ -10,4 +10,8 @@
     <PackageReference Include="SendGrid" Version="9.22.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChatApp.Core\ChatApp.Core.csproj" />
+  </ItemGroup>
+
 </Project>
