@@ -23,7 +23,7 @@ namespace ChatApp.Service
 
         public Task Execute(string apiKey, string subject, string message, string email)
         {
-            if (apiKey.Length < 25)
+            if (apiKey.Length < 25 || string.IsNullOrWhiteSpace(apiKey))
             {
                 throw new InvalidSendgridCredentialsException(Options.SendGridUser);
             }
