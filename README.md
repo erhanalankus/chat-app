@@ -1,31 +1,57 @@
-﻿# ChatApp
+﻿# Chat Application
 
-﻿Create simple chating application.
+#### Instructions for Running the App on your Machine with Docker(Windows or Linux)
 
-Use ASP.NET Core 3.1 for backend and Bootstrap 4.5 for frontend.
+1. Clone the repository
 
-Implement user registration and basic login management.
+	`git clone https://github.com/erhanalankus/chat-app.git`
 
-Store firstname, surname and e-mail for each user.
+2. Enter SendGrid credentials into the Dockerfile. You should have received the credentials in an email, sent to you from me.
+	
+	Replace `{REDACTED-USERNAME}` with the username value in the email(in double quotes).
+	
+	Replace `{REDACTED-APIKEY}` with the API key in the email(in double quotes).
 
-Each user will be able to create a new account and edit entered details.
+	For example, if the username is "Brad Pitt", and the API key is "SG.12345", this is what the lines in your Dockerfile should look like:
 
-User will be able to reset the password using e-mail.
+	```
+	ENV SendGridUser="Brad Pitt"
+	ENV SendGridKey="SG.12345"
+	```
 
-User will need to log in before reading or sending messages.
+3. Build Docker image
 
-The chat application will provide several chatting channels.
+	`docker build -t erhanalankus/chatapp .`
 
-User will be able to create a new channel.
+4. Run Docker container
 
-User will be able to delete own channels.
+	`docker run -p 8080:80 -v chatAppVolume:/app/Database erhanalankus/chatapp`
 
-When entering the channel, user will see all presented users in this channel and all previously sent messages.
+	This command will create a volume folder(named chatAppVolume) on your filesystem outside the container. The folder will be used to persist the SQLite database file. If you want, you can inspect the folder created in your machine at this path:
 
-New messages will be received from server using WebSockets or similar technology.
+	*Windows:* `\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\`
 
-Focus on clean design and usability.
+	*Linux:* `/var/lib/docker/volumes`
 
-Focus on clean code using standard .NET coding style.
+5. Visit localhost:8080 on your browser and use the application.
 
-Provide docker container recipe to run the application.
+
+#### Instructions for Running the App on your Machine without Docker(Windows)
+
+You can just hit `F5` and start the application. However, you need to enter the SendGrid credentials into the secrets.json file of ChatApp.Presentation.
+
+Right click ChatApp.Presentation on the solution explorer and click "Manage User Secrets" to open the secrets.json file. Enter the SendGrid credentials into that file.
+
+For example, if the username is "Brad Pitt", and the API key is "SG.12345", this is what the lines in your secrets.json file should look like:
+
+```
+"SendGridUser": "Brad Pitt",
+"SendGridKey": "SG.12345",
+```
+
+
+#### About the Solution
+
+The solution consists of six projects. The architecture is inspired by the Onion Architecture.
+
+![Onion Archtecture Diagram](onion.png)
