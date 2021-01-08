@@ -23,7 +23,7 @@ namespace ChatApp.Service
 
         public Task Execute(string apiKey, string subject, string message, string email)
         {
-            if (apiKey.Length < 25)
+            if (string.IsNullOrWhiteSpace(apiKey) || apiKey.Length < 25)
             {
                 throw new InvalidSendgridCredentialsException(Options.SendGridUser);
             }
@@ -31,7 +31,7 @@ namespace ChatApp.Service
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("erhan03@hacettepe.edu.tr", Options.SendGridUser),
+                From = new EmailAddress("erhan.alankus@asendia.com", Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
