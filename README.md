@@ -6,6 +6,8 @@
 
 	`git clone https://github.com/erhanalankus/chat-app.git`
 
+	`cd chat-app`
+
 2. Enter SendGrid information into the Dockerfile. You should have received the information in an email, sent to you from me.
 	
 	Replace `{REDACTED-USERNAME}` with the username value in the email(in double quotes).
@@ -71,3 +73,8 @@ The solution consists of six projects. The architecture is inspired by the Onion
 **ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting them the chat application.
 
 **ChatApp.Tests:** This MSTest project tests the email sending implementation against invalid SendGrid API keys.
+
+
+#### How to Use the Chat Application
+
+![How to use the chat application](http://yunus.hacettepe.edu.tr/~erhan03/img/chat-howto.png)
