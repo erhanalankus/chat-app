@@ -1,6 +1,6 @@
 ﻿# Chat Application
 
-#### Instructions for Running the App on your Machine with Docker(Windows or Linux)
+### Instructions for Running the App on your Machine with Docker(Windows or Linux)
 
 1. Clone the repository
 
@@ -56,7 +56,7 @@ For example, if the username is "Brad Pitt", the API key is "SG.12345", and the 
 ```
 
 
-#### About the Solution
+### About the Solution
 
 The solution consists of six projects. The architecture is inspired by the Onion Architecture.
 
@@ -70,11 +70,11 @@ The solution consists of six projects. The architecture is inspired by the Onion
 
 **ChatApp.Communication:** This project has the SignalR Hub class and the Entity-ViewModel mapping profiles.
 
-**ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting them the chat application.
+**ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting the chat application.
 
 **ChatApp.Tests:** This MSTest project tests the email sending implementation against invalid SendGrid API keys.
 
 
-#### How to Use the Chat Application
+### How to Use the Chat Application
 
 ![How to use the chat application](http://yunus.hacettepe.edu.tr/~erhan03/img/chat-howto.png)
