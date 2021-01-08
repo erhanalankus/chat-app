@@ -41,39 +41,7 @@
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>A warning about email functionality.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>This app sends you confirmation emails for some actions.</p>
-                        <p>Please use a <b>@@mailinator.com</b> email.</p>
-                        <p>This app uses SendGrid service to send emails and my tests showed mailinator to be the most reliable email service to receive emails from this app.</p>
-                        <br /><br />
-                        <p><b>How to use mailinator:</b></p>
-                        <p>Enter a random email address that ends with <b>@@mailinator.com</b>. For example: goodapples@mailinator.com</p>
-                        <p>Go to <a href="https://www.mailinator.com" target="_blank">mailinator.com</a></p>
-                        <p>Enter "goodapples" to the textbox at the top of the page</p>
-                        <p>Click "GO", and you will reach a mailbox that displays all emails that was sent to goodapples@mailinator.com recently.</p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+        
     </div>
 </div>
 

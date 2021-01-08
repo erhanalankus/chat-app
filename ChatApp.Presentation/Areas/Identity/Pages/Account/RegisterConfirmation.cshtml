@@ -1,0 +1,32 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <p>
+            This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+            Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+        </p>
+    }
+    else
+    {
+        <p>
+            Please check your email to confirm your account.
+        </p>
+    }
+<br />
+<hr />
+<br />
+<p><b>If you didn't receive the email:</b></p>
+<ul>
+    <li>You may have failed to provide the correct SendGrid credentials. Please see the email you received from me and the README.</li>
+    <li>Your email provider may have marked the email as SPAM.</li>
+    <li>Your email provider may have blocked the email. If this is the case, please try again with a <a href="https://www.mailinator.com/">mailinator</a> email.</li>
+    <li>You can contact me at <a href="mailto:erhanalankus@gmail.com">erhanalankus@gmail.com</a> for support.</li>
+</ul>
+}
