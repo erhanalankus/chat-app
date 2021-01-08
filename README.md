@@ -54,4 +54,14 @@ For example, if the username is "Brad Pitt", and the API key is "SG.12345", this
 
 The solution consists of six projects. The architecture is inspired by the Onion Architecture.
 
-![Onion Archtecture Diagram](onion.png)
+![Onion Archtecture Diagram](http://yunus.hacettepe.edu.tr/~erhan03/img/onion.png)
+
+**ChatApp.Core:** This project has the core entities(Message, Room, ApplicationUser), ViewModels and the custom exception for invalid SendGrid credentials.
+
+**ChatApp.Data:** This project has the database context class, configurations and the migrations.
+
+**ChatApp.Service:** This project has the email sending implementation.
+
+**ChatApp.Communication:** This project has the SignalR Hub class and the Entity-ViewModel mapping profiles.
+
+**ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting them the chat application.
