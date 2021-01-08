@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{977DAF
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Dockerfile = Dockerfile
-		..\..\..\..\Users\Erhan\Desktop\onion.png = ..\..\..\..\Users\Erhan\Desktop\onion.png
 		README.md = README.md
 	EndProjectSection
 EndProject
