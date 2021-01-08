@@ -65,3 +65,5 @@ The solution consists of six projects. The architecture is inspired by the Onion
 **ChatApp.Communication:** This project has the SignalR Hub class and the Entity-ViewModel mapping profiles.
 
 **ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting them the chat application.
+
+**ChatApp.Tests:** This MSTest project tests the email sending implementation against invalid SendGrid API keys.
