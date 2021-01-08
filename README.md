@@ -6,17 +6,20 @@
 
 	`git clone https://github.com/erhanalankus/chat-app.git`
 
-2. Enter SendGrid credentials into the Dockerfile. You should have received the credentials in an email, sent to you from me.
+2. Enter SendGrid information into the Dockerfile. You should have received the information in an email, sent to you from me.
 	
 	Replace `{REDACTED-USERNAME}` with the username value in the email(in double quotes).
 	
 	Replace `{REDACTED-APIKEY}` with the API key in the email(in double quotes).
 
-	For example, if the username is "Brad Pitt", and the API key is "SG.12345", this is what the lines in your Dockerfile should look like:
+	Replace `{REDACTED-SENDER-EMAIL}` with the sender email in the email(in double quotes).
+
+	For example, if the username is "Brad Pitt",the API key is "SG.12345", and the sender email is "brad@gmail.com", this is what the lines in your Dockerfile should look like:
 
 	```
 	ENV SendGridUser="Brad Pitt"
 	ENV SendGridKey="SG.12345"
+	ENV SenderEmail="brad@gmail.com"
 	```
 
 3. Build Docker image
@@ -40,13 +43,14 @@
 
 You can just hit `F5` and start the application. However, you need to enter the SendGrid credentials into the secrets.json file of ChatApp.Presentation.
 
-Right click ChatApp.Presentation on the solution explorer and click "Manage User Secrets" to open the secrets.json file. Enter the SendGrid credentials into that file.
+Right click ChatApp.Presentation on the solution explorer and click "Manage User Secrets" to open the secrets.json file. Enter the SendGrid information into that file.
 
-For example, if the username is "Brad Pitt", and the API key is "SG.12345", this is what the lines in your secrets.json file should look like:
+For example, if the username is "Brad Pitt", the API key is "SG.12345", and the email sender is "brad@gmail.com", this is what the lines in your secrets.json file should look like:
 
 ```
 "SendGridUser": "Brad Pitt",
 "SendGridKey": "SG.12345",
+"SenderEmail": "brad@gmail.com",
 ```
 
 
@@ -65,3 +69,5 @@ The solution consists of six projects. The architecture is inspired by the Onion
 **ChatApp.Communication:** This project has the SignalR Hub class and the Entity-ViewModel mapping profiles.
 
 **ChatApp.Presentation:** This Razor Pages project is responsible for registering and logging in the user, membership operations, and presenting them the chat application.
+
+**ChatApp.Tests:** This MSTest project tests the email sending implementation against invalid SendGrid API keys.

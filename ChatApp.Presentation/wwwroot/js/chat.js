@@ -15,15 +15,17 @@
     });
 
     connection.on("newMessage", function (messageView) {
-        var isMine = messageView.from === viewModel.myName();
+        debugger;
+        var isMine = messageView.fromEmail === viewModel.myNormalizedEmail();
         var message = new ChatMessage(messageView.content, messageView.timestamp, messageView.from, isMine, messageView.avatar);
         viewModel.chatMessages.push(message);
         $(".chat-body").animate({ scrollTop: $(".chat-body")[0].scrollHeight }, 1000);
     });
 
-    connection.on("getProfileInfo", function (displayName, avatar) {
+    connection.on("getProfileInfo", function (displayName, avatar, normalizedEmail) {
         viewModel.myName(displayName);
         viewModel.myAvatar(avatar);
+        viewModel.myNormalizedEmail(normalizedEmail);
     });
 
     connection.on("addUser", function (user) {
@@ -71,6 +73,7 @@
         self.joinedRoomId = ko.observable("");
         self.serverInfoMessage = ko.observable("");
         self.myName = ko.observable("");
+        self.myNormalizedEmail = ko.observable("");
         self.myAvatar = ko.observable("avatar1.png");
         self.onEnter = function (d, e) {
             if (e.keyCode === 13) {
@@ -151,7 +154,8 @@
             connection.invoke("GetMessageHistory", self.joinedRoom()).then(function (result) {
                 self.chatMessages.removeAll();
                 for (var i = 0; i < result.length; i++) {
-                    var isMine = result[i].from == self.myName();
+                    debugger;
+                    var isMine = result[i].fromEmail == self.myNormalizedEmail();
                     self.chatMessages.push(new ChatMessage(result[i].content,
                         result[i].timestamp,
                         result[i].from,

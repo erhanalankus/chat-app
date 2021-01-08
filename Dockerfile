@@ -21,4 +21,5 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENV SendGridUser={REDACTED-USERNAME}
 ENV SendGridKey={REDACTED-APIKEY}
+ENV SenderEmail={REDACTED-SENDER-EMAIL}
 ENTRYPOINT ["dotnet", "ChatApp.Presentation.dll"]
