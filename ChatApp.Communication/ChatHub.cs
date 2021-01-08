@@ -209,7 +209,7 @@ namespace ChatApp.Communication
                     _ConnectionsMap.Add(IdentityName, Context.ConnectionId);
                 }
 
-                Clients.Caller.SendAsync("getProfileInfo", user.FullName, user.Avatar);
+                Clients.Caller.SendAsync("getProfileInfo", user.FullName, user.Avatar, user.NormalizedEmail);
             }
             catch (Exception ex)
             {
