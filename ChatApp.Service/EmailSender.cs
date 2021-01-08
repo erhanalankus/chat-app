@@ -31,7 +31,7 @@ namespace ChatApp.Service
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("erhan.alankus@asendia.com", Options.SendGridUser),
+                From = new EmailAddress(Options.SenderEmail, Options.SendGridUser),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
