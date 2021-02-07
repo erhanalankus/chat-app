@@ -60,7 +60,7 @@ For example, if the username is "Brad Pitt", the API key is "SG.12345", and the 
 
 The solution consists of six projects. The architecture is inspired by the Onion Architecture.
 
-![Onion Archtecture Diagram](http://yunus.hacettepe.edu.tr/~erhan03/img/onion.png)
+![Onion Archtecture Diagram](https://github.com/erhanalankus/chat-app/blob/development/onion-architecture.png)
 
 **ChatApp.Core:** This project has the core entities(Message, Room, ApplicationUser), ViewModels and the custom exception for invalid SendGrid credentials.
 
@@ -77,4 +77,4 @@ The solution consists of six projects. The architecture is inspired by the Onion
 
 ### How to Use the Chat Application
 
-![How to use the chat application](http://yunus.hacettepe.edu.tr/~erhan03/img/chat-howto.png)
+![How to use the chat application](https://github.com/erhanalankus/chat-app/blob/development/chat-app.png)
