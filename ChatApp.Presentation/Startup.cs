@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SendGrid.Extensions.DependencyInjection;
 
 namespace ChatApp.Presentation
 {
@@ -33,7 +34,7 @@ namespace ChatApp.Presentation
             services.AddAutoMapper(typeof(ChatHub));
             services.AddRazorPages();
             services.AddSignalR();
-
+            services.AddSendGrid(options => options.ApiKey = Configuration["SendGridKey"]);
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
