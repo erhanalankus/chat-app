@@ -9,9 +9,12 @@ namespace ChatApp.Service
 {
     public class EmailSender : IEmailSender
     {
-        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
+        private readonly ISendGridClient _sendGridClient;
+
+        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor, ISendGridClient sendGridClient)
         {
             Options = optionsAccessor.Value;
+            _sendGridClient = sendGridClient;
         }
 
         public AuthMessageSenderOptions Options { get; } //set only via Secret Manager
@@ -28,7 +31,6 @@ namespace ChatApp.Service
                 throw new InvalidSendgridCredentialsException(Options.SendGridUser);
             }
 
-            var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress(Options.SenderEmail, Options.SendGridUser),
@@ -42,7 +44,7 @@ namespace ChatApp.Service
             // See https://sendgrid.com/docs/User_Guide/Settings/tracking.html
             msg.SetClickTracking(false, false);
 
-            return client.SendEmailAsync(msg);
+            return _sendGridClient.SendEmailAsync(msg);
         }
     }
 }
